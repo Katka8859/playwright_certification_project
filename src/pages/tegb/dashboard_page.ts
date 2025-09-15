@@ -19,6 +19,9 @@ export class DashboardPage {
   readonly editProfileButton: Locator;
   readonly profileDetailColumn: Locator;
   readonly accountsTitle: Locator;
+  readonly accountNumberHeading: Locator;
+  readonly accountBalanceHeading: Locator;
+  readonly accountTypeHeading: Locator;
   readonly accountNumber: Locator;
   readonly accountBalance: Locator;
   readonly accountType: Locator;
@@ -54,14 +57,21 @@ export class DashboardPage {
     );
     this.profileDetailColumn = page.locator("//div[@class='profile-detail']");
     this.accountsTitle = page.locator("//h2[@data-testid='accounts-title']");
-    this.accountNumber = page.locator(
+    this.accountNumberHeading = page.locator(
       "//th[@data-testid='account-number-heading']"
     );
-    this.accountBalance = page.locator(
+    this.accountBalanceHeading = page.locator(
       "//th[@data-testid='account-balance-heading']"
     );
-    this.accountType = page.locator(
+    this.accountTypeHeading = page.locator(
       "//th[@data-testid='account-type-heading']"
+    );
+    this.accountNumber = page.locator(
+      "//td[@data-testid='account-number']"
+    );
+    this.accountBalance = page.locator("//td[@data-testid='account-balance']");
+    this.accountType = page.locator(
+      "//td[@data-testid='account-type']"
     );
     this.createAccountButton = page.locator(
       "//button[@class='account-action']"

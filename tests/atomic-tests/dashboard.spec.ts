@@ -91,12 +91,24 @@ test.describe("Atomic tests for user dashboard page", () => {
     await test.step("Accounts details tests", async () => {
       await expect.soft(dashBoardPage.accountsTitle).toBeVisible();
       await expect.soft(dashBoardPage.accountsTitle).toHaveText("Účty");
+      await expect.soft(dashBoardPage.accountNumberHeading).toBeVisible();
+      await expect
+        .soft(dashBoardPage.accountNumberHeading)
+        .toHaveText("Číslo účtu");
+      await expect.soft(dashBoardPage.accountBalanceHeading).toBeVisible();
+      await expect
+        .soft(dashBoardPage.accountBalanceHeading)
+        .toHaveText("Zůstatek");
+      await expect.soft(dashBoardPage.accountTypeHeading).toBeVisible();
+      await expect
+        .soft(dashBoardPage.accountTypeHeading)
+        .toHaveText("Typ účtu");
       await expect.soft(dashBoardPage.accountNumber).toBeVisible();
-      await expect.soft(dashBoardPage.accountNumber).toHaveText("Číslo účtu");
+      await expect.soft(dashBoardPage.accountNumber).toHaveText("1011566");
       await expect.soft(dashBoardPage.accountBalance).toBeVisible();
-      await expect.soft(dashBoardPage.accountBalance).toHaveText("Zůstatek");
+      await expect.soft(dashBoardPage.accountBalance).toHaveText("666.00 Kč");
       await expect.soft(dashBoardPage.accountType).toBeVisible();
-      await expect.soft(dashBoardPage.accountType).toHaveText("Typ účtu");
+      await expect.soft(dashBoardPage.accountType).toHaveText("test");
     });
 
     await test.step("Accounts - Create Accounts button tests", async () => {
