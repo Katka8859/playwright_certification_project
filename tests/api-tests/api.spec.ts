@@ -3,7 +3,7 @@ import { UserApi } from "../../src/api/user_api.ts";
 
 // TODO schování přihlašovacích údajů
 
-test("Login user by api", async ({ request }) => {
+test("Login user by api and checking his token", async ({ request }) => {
   const userApi = new UserApi(request);
 
   const loginResponse = await userApi.loginUser("km_api", "123456");
@@ -15,4 +15,8 @@ test("Login user by api", async ({ request }) => {
     accessToken,
     "Login Response body.access_token is defined"
   ).toBeDefined();
+  expect(
+    typeof loginResponseBody.access_token,
+    "Login Response body.access_token is a String"
+  ).toBe("string");
 });
