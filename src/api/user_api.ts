@@ -27,4 +27,15 @@ export class UserApi {
     });
     return response;
   }
+
+  async registerUser(username: string, password: string, email: string) {
+    const response = this.request.post(`${this.apiUrl}/tegb/register`, {
+      data: {
+        username,
+        password,
+        email,
+      },
+    });
+    return response;
+  }
 }

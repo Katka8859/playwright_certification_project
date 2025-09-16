@@ -3,13 +3,15 @@ import { DashboardPage } from "../../src/pages/tegb/dashboard_page.ts";
 import { LoginPage } from "../../src/pages/tegb/login_page.ts";
 
 test.describe("Atomic tests for user dashboard page", () => {
+  const username = process.env.TEGB_USERNAME as string;
+  const password = process.env.TEGB_PASSWORD as string;
   let dashBoardPage: DashboardPage;
 
   test.beforeEach(async ({ page }) => {
     const loginPage = new LoginPage(page);
     dashBoardPage = await loginPage
       .openTegBLoginPage()
-      .then((login) => login.loginUser("km_user", "katka1234"));
+      .then((login) => login.loginUser(username, password));
     //dashBoardPage = await loginPage.loginUser("km_user", "katka1234");
   });
 
