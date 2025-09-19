@@ -9,6 +9,7 @@ export class RegisterPage {
   readonly emailInput: Locator;
   readonly registerButton: Locator;
   readonly backToLoginButton: Locator;
+  readonly registerSuccess: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +24,7 @@ export class RegisterPage {
       "//button[@data-testid='submit-button']"
     );
     this.backToLoginButton = page.locator("//button[@class='link-button']");
+    this.registerSuccess = page.locator("//div[@class='success-message']");
   }
 
   async fillRegisterUsername(username: string): Promise<this> {
@@ -47,15 +49,17 @@ export class RegisterPage {
 
   async registerNewUser(
     username: string,
-    password: string
-  ): Promise<DashboardPage> {
+    password: string,
+    email: string
+  ): Promise<LoginPage> {
     await test.step("Register new user to TEGB", async () => {
       await this.fillRegisterUsername(username);
       await this.fillRegisterPassword(password);
+      await this.fillEmail(email);
       await this.clickRegister();
     });
 
-    return new DashboardPage(this.page);
+    return new LoginPage(this.page);
   }
 
   async clickBackToLogin(): Promise<LoginPage> {
