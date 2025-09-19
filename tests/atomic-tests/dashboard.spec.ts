@@ -69,13 +69,13 @@ test.describe("Atomic tests for user dashboard page", () => {
       await expect.soft(dashBoardPage.profileDetailEmail).toBeVisible();
       await expect
         .soft(dashBoardPage.profileDetailEmail)
-        .toHaveText("Email: N/A");
+        .toHaveText("Email: test@test.cz");
       await expect.soft(dashBoardPage.profileDetailPhone).toBeVisible();
       await expect
         .soft(dashBoardPage.profileDetailPhone)
-        .toHaveText("Telefon: N/A");
+        .toHaveText("Telefon: +420555666777");
       await expect.soft(dashBoardPage.profileDetailAge).toBeVisible();
-      await expect.soft(dashBoardPage.profileDetailAge).toHaveText("Věk: 1");
+      await expect.soft(dashBoardPage.profileDetailAge).toHaveText("Věk: 25");
       await expect.soft(dashBoardPage.profileDetailColumn).toHaveCount(5);
     });
 

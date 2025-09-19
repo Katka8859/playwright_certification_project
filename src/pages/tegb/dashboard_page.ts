@@ -10,6 +10,7 @@ export class DashboardPage {
   readonly sidebarNavigationAccounts: Locator;
   readonly sidebarNavigationTransactions: Locator;
   readonly sidebarNavigationSupport: Locator;
+  readonly profileDetailBox: Locator;
   readonly profileDetailsForm: Locator;
   readonly profileDetailsTitle: Locator;
   readonly profileDetailName: Locator;
@@ -52,6 +53,8 @@ export class DashboardPage {
     this.sidebarNavigationSupport = page.locator(
       "(//aside[@class='dashboard-sidebar']//li)[4]"
     );
+    this.profileDetailBox = page.locator("//div[@class='account-summary']");
+    this.profileDetailsForm = page.locator("//form");
     this.profileDetailsTitle = page.locator(
       "//h2[@data-testid='profile-details-title']"
     );
@@ -101,7 +104,6 @@ export class DashboardPage {
     this.succesfullProfileUpdateMessage = page.locator(
       "//div[@class='update-message']"
     );
-    this.profileDetailsForm = page.locator("//form");
   }
 
   async clickLogout(): Promise<LoginPage> {
