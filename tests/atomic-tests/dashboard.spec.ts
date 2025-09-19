@@ -12,7 +12,6 @@ test.describe("Atomic tests for user dashboard page", () => {
     dashBoardPage = await loginPage
       .openTegBLoginPage()
       .then((login) => login.loginUser(username, password));
-    //dashBoardPage = await loginPage.loginUser("km_user", "katka1234");
   });
 
   test("User Dashboard", async () => {
@@ -21,9 +20,9 @@ test.describe("Atomic tests for user dashboard page", () => {
       await expect
         .soft(dashBoardPage.dashboardTitle)
         .toHaveText("TEG#B Dashboard");
-      await expect(dashBoardPage.pageLogo).toBeVisible();
-      await expect(dashBoardPage.pageLogo).toHaveClass("logo"); //!
-      await expect(dashBoardPage.logoutButton).toBeVisible();
+      await expect.soft(dashBoardPage.pageLogo).toBeVisible();
+      await expect.soft(dashBoardPage.pageLogo).toHaveClass("logo");
+      await expect.soft(dashBoardPage.logoutButton).toBeVisible();
       await expect.soft(dashBoardPage.logoutButton).toHaveText("Odhlásit se");
     });
 
