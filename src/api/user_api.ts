@@ -7,16 +7,6 @@ export class UserApi {
   constructor(request: APIRequestContext) {
     this.request = request;
   }
-  /*
-  async createAccount() {
-    const response = this.request.post(`${this.apiUrl}/tegb/accounts/create`, {
-      data: {
-        startBalance: "22222",
-        type: "Test",
-      },
-    });
-    return response;
-  }*/
 
   async loginUser(username: string, password: string) {
     const response = this.request.post(`${this.apiUrl}/tegb/login`, {
