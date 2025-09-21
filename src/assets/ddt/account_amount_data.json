@@ -2,26 +2,31 @@
   {
     "description": "Debit account with 0",
     "start_balance": 0,
-    "type": "Debit"
+    "type": "Debit",
+    "run": true
   },
   {
     "description": "Children account with decimal number",
     "start_balance": 200000.52,
-    "type": "Children Account"
+    "type": "Children Account",
+    "run": true
   },
   {
     "description": "Credit account with negative number ",
     "start_balance": -12345,
-    "type": "Credit"
+    "type": "Credit",
+    "run": true
   },
   {
     "description": "Debit account with negative number¨- maximum number of digits",
     "start_balance": -196000921,
-    "type": "Debit"
+    "type": "Debit",
+    "run": false
   },
   {
     "description": "Savings account with maximum number of digits",
     "start_balance": 298000123,
-    "type": "Savings account"
+    "type": "Savings account",
+    "run": false
   }
 ]

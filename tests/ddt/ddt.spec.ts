@@ -10,8 +10,11 @@ test.describe("Create an accounts with account balances from account_amount_data
   const username = faker.internet.username();
   const email = faker.internet.email();
   const password = faker.internet.password();
+  const runnableData = accountAmountData.filter(
+    (filter) => filter.run === true
+  );
 
-  accountAmountData.forEach((accountdata, index) => {
+  runnableData.forEach((accountdata, index) => {
     test(`${index + 1} DDT: Create Account type: ${
       accountdata.description
     }`, async ({ request, page }) => {
