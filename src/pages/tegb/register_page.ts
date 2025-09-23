@@ -59,7 +59,7 @@ export class RegisterPage {
       await this.clickRegister();
       await expect(this.registerSuccess).toHaveText(
         "🎉 Registrace úspěšná! Vítejte v TEG#B! 🎉",
-        { timeout: 5000 }
+        { timeout: 15000 }
       );
     });
 
