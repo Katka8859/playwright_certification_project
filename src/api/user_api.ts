@@ -18,6 +18,23 @@ export class UserApi {
     return response;
   }
 
+  async createAccount(
+    accessToken: string,
+    start_balance: number,
+    type: string
+  ) {
+    const response = this.request.post(`${this.apiUrl}/tegb/accounts/create`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+      data: {
+        startBalance: start_balance,
+        type: type,
+      },
+    });
+    return response;
+  }
+
   async registerUser(username: string, password: string, email: string) {
     const response = this.request.post(`${this.apiUrl}/tegb/register`, {
       data: {

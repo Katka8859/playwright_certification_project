@@ -161,4 +161,11 @@ export class DashboardPage {
     await this.createAccountButton.click();
     return this;
   }
+
+  async takeScreenshotOfProfiledetailBox(): Promise<DashboardPage> {
+    await expect(this.profileDetailBox).toHaveScreenshot(
+      "profile_detail_box_test.png"
+    );
+    return this;
+  }
 }

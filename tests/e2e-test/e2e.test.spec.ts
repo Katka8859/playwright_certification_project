@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test";
 import { UserApi } from "../../src/api/user_api.ts";
 import { LoginPage } from "../../src/pages/tegb/login_page.ts";
 import { fakerCS_CZ as faker } from "@faker-js/faker";
-import { RegisterPage } from "../../src/pages/tegb/register_page.ts";
 import { DashboardPage } from "../../src/pages/tegb/dashboard_page.ts";
 
 test.describe("E2E test", () => {
@@ -23,7 +22,6 @@ test.describe("E2E test", () => {
     const phone = faker.phone.number({ style: "international" });
     const age = faker.number.int({ min: 18, max: 100 });
     const loginPage = new LoginPage(page);
-    const registerPage = new RegisterPage(page);
     const dashBoardPage = new DashboardPage(page);
 
     await test.step("Register user", async () => {
@@ -32,9 +30,6 @@ test.describe("E2E test", () => {
         .then((register) =>
           register.registerNewUser(username, password, email)
         );
-      await expect(registerPage.registerSuccess).toHaveText(
-        "🎉 Registrace úspěšná! Vítejte v TEG#B! 🎉"
-      );
     });
 
     await test.step("Create account by api", async () => {
@@ -46,18 +41,12 @@ test.describe("E2E test", () => {
       const loginResponseBody = await loginResponse.json();
       const accessToken = loginResponseBody.access_token;
 
-      const createAccount = await request.post(
-        "https://tegb-backend-877a0b063d29.herokuapp.com/tegb/accounts/create",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-          data: {
-            startBalance: 66666,
-            type: "Credit",
-          },
-        }
+      const createAccount = await userApi.createAccount(
+        accessToken,
+        66666,
+        "Credit"
       );
+
       expect(createAccount.status(), "Created account has response 201").toBe(
         201
       );

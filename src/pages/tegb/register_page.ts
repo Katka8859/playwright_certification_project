@@ -1,4 +1,4 @@
-import { Locator, Page, test } from "@playwright/test";
+import { Locator, Page, test, expect } from "@playwright/test";
 import { DashboardPage } from "./dashboard_page.ts";
 import { LoginPage } from "./login_page.ts";
 
@@ -57,6 +57,10 @@ export class RegisterPage {
       await this.fillRegisterPassword(password);
       await this.fillEmail(email);
       await this.clickRegister();
+      await expect(this.registerSuccess).toHaveText(
+        "🎉 Registrace úspěšná! Vítejte v TEG#B! 🎉",
+        { timeout: 5000 }
+      );
     });
 
     return new LoginPage(this.page);
