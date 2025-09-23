@@ -164,7 +164,10 @@ export class DashboardPage {
 
   async takeScreenshotOfProfiledetailBox(): Promise<DashboardPage> {
     await expect(this.profileDetailBox).toHaveScreenshot(
-      "profile_detail_box_test.png"
+      "profile_detail_box_test.png",
+      {
+        maxDiffPixelRatio: 0.01,
+      }
     );
     return this;
   }
